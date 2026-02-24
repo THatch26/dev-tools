@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DockerComposeValidator from '../components/DockerComposeValidator';
+---
+
+<Layout
+  title="Docker Compose Validator - Validate docker-compose.yml Online"
+  description="Validate Docker Compose files with schema-aware checks. Detects invalid keys, missing images, circular dependencies, port format issues. Templates for common stacks. Free online tool."
+>
+  <div class="space-y-4">
+    <div>
+      <a href="/" class="text-sm text-[--color-text-muted] hover:text-[--color-text-secondary] transition-colors no-underline">&larr; All tools</a>
+    </div>
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2">Docker Compose Validator</h1>
+      <p class="text-[--color-text-secondary]">
+        Validate your docker-compose.yml with real schema-aware checks. Goes beyond YAML syntax to verify service configuration, dependency references, port formats, restart policies, and more.
+      </p>
+    </div>
+    <DockerComposeValidator client:load />
+  </div>
+</Layout>

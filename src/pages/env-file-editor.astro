@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EnvEditor from '../components/EnvEditor';
+---
+
+<Layout
+  title=".env File Editor - Environment Variable Editor and Converter"
+  description="Parse, edit, and convert .env files online. Framework templates for Next.js, Django, Laravel, Express, Rails. Export to JSON, YAML, Docker env, shell format. Free tool."
+>
+  <div class="space-y-4">
+    <div>
+      <a href="/" class="text-sm text-[--color-text-muted] hover:text-[--color-text-secondary] transition-colors no-underline">&larr; All tools</a>
+    </div>
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2">.env File Editor</h1>
+      <p class="text-[--color-text-secondary]">
+        Edit and convert environment variable files. Load framework-specific templates, sort variables, remove duplicates, and export to JSON, YAML, Docker env, or shell export format.
+      </p>
+    </div>
+    <EnvEditor client:load />
+  </div>
+</Layout>

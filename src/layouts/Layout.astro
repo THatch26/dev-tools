@@ -1,0 +1,98 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const siteName = 'DevToolKit';
+const fullTitle = `${title} | ${siteName}`;
+const siteUrl = 'https://devtoolkit.pages.dev';
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={siteName} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <title>{fullTitle}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-[--color-border] bg-[--color-bg-secondary]">
+      <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 text-[--color-text-primary] no-underline hover:opacity-80 transition-opacity">
+          <span class="text-xl font-bold text-[--color-accent]">&gt;_</span>
+          <span class="text-lg font-semibold">DevToolKit</span>
+        </a>
+        <a
+          href="https://ko-fi.com/tylerhatch"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm px-3 py-1.5 rounded-lg bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary] hover:bg-[--color-border] transition-colors no-underline"
+        >
+          Support this project
+        </a>
+      </nav>
+    </header>
+
+    <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
+      <slot />
+    </main>
+
+    <footer class="border-t border-[--color-border] bg-[--color-bg-secondary] mt-auto">
+      <div class="max-w-6xl mx-auto px-4 py-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[--color-text-muted]">
+          <div class="flex items-center gap-4">
+            <a href="/" class="hover:text-[--color-text-secondary] transition-colors no-underline">All Tools</a>
+            <span>&middot;</span>
+            <span>100% client-side. Your data never leaves your browser.</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a
+              href="https://ko-fi.com/tylerhatch"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-[--color-text-secondary] transition-colors no-underline"
+            >
+              Buy me a coffee
+            </a>
+            <span>&middot;</span>
+            <a
+              href="https://m.do.co/c/b0a84c472a33"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-[--color-text-secondary] transition-colors no-underline"
+            >
+              Deploy on DigitalOcean
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+  </body>
+</html>

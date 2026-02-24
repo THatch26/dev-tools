@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CronGenerator from '../components/CronGenerator';
+---
+
+<Layout
+  title="Cron Expression Generator - Visual Crontab Builder"
+  description="Build and decode cron expressions with a visual editor. Human-readable descriptions, next 10 execution times, common presets. Free online crontab generator tool."
+>
+  <div class="space-y-4">
+    <div>
+      <a href="/" class="text-sm text-[--color-text-muted] hover:text-[--color-text-secondary] transition-colors no-underline">&larr; All tools</a>
+    </div>
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2">Cron Expression Generator</h1>
+      <p class="text-[--color-text-secondary]">
+        Build cron expressions visually or type them directly. Get human-readable descriptions and preview the next scheduled execution times. Supports standard 5-field cron syntax.
+      </p>
+    </div>
+    <CronGenerator client:load />
+  </div>
+</Layout>

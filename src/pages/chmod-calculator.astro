@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ChmodCalculator from '../components/ChmodCalculator';
+---
+
+<Layout
+  title="chmod Calculator - Unix File Permission Calculator"
+  description="Interactive chmod calculator with visual permission toggles, octal and symbolic notation, common presets like 755 and 644, security warnings, and umask calculation. Free online tool."
+>
+  <div class="space-y-4">
+    <div>
+      <a href="/" class="text-sm text-[--color-text-muted] hover:text-[--color-text-secondary] transition-colors no-underline">&larr; All tools</a>
+    </div>
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2">chmod Calculator</h1>
+      <p class="text-[--color-text-secondary]">
+        Calculate Unix/Linux file permissions interactively. Toggle permissions for owner, group, and other to get the octal notation, symbolic representation, and ready-to-use chmod command.
+      </p>
+    </div>
+    <ChmodCalculator client:load />
+  </div>
+</Layout>

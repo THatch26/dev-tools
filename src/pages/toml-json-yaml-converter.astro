@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TomlConverter from '../components/TomlConverter';
+---
+
+<Layout
+  title="TOML to JSON to YAML Converter - Online Format Converter"
+  description="Convert between TOML, JSON, and YAML formats online. Auto-detect input format, bidirectional conversion, syntax validation with clear error messages. Free, runs in your browser."
+>
+  <div class="space-y-4">
+    <div>
+      <a href="/" class="text-sm text-[--color-text-muted] hover:text-[--color-text-secondary] transition-colors no-underline">&larr; All tools</a>
+    </div>
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2">TOML / JSON / YAML Converter</h1>
+      <p class="text-[--color-text-secondary]">
+        Convert between TOML, JSON, and YAML instantly. Supports Cargo.toml, pyproject.toml, package.json, and any structured configuration file. Auto-detects input format.
+      </p>
+    </div>
+    <TomlConverter client:load />
+  </div>
+</Layout>

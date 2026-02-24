@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tools = [
+  {
+    title: 'chmod Calculator',
+    description: 'Interactive Unix file permission calculator with octal/symbolic output, common presets, security warnings, and umask calculation.',
+    href: '/chmod-calculator',
+    icon: '🔐',
+    keywords: ['permissions', 'octal', 'symbolic', 'umask'],
+  },
+  {
+    title: 'TOML / JSON / YAML Converter',
+    description: 'Convert between TOML, JSON, and YAML formats instantly. Auto-detect input format with clear error messages.',
+    href: '/toml-json-yaml-converter',
+    icon: '🔄',
+    keywords: ['toml', 'json', 'yaml', 'convert'],
+  },
+  {
+    title: '.env File Editor',
+    description: 'Parse, edit, and convert .env files. Includes framework templates for Next.js, Django, Laravel, Express, and Rails.',
+    href: '/env-file-editor',
+    icon: '📝',
+    keywords: ['env', 'dotenv', 'environment', 'variables'],
+  },
+  {
+    title: 'Cron Expression Generator',
+    description: 'Build and decode cron expressions with a visual editor, human-readable descriptions, and next execution preview.',
+    href: '/cron-expression-generator',
+    icon: '⏰',
+    keywords: ['cron', 'crontab', 'schedule', 'timer'],
+  },
+  {
+    title: 'Docker Compose Validator',
+    description: 'Validate docker-compose.yml files with schema-aware checks. Detects invalid keys, missing services, circular dependencies, and port issues.',
+    href: '/docker-compose-validator',
+    icon: '🐳',
+    keywords: ['docker', 'compose', 'validate', 'yaml'],
+  },
+];
+---
+
+<Layout
+  title="Free Online Developer Tools"
+  description="Fast, free, client-side developer tools. chmod calculator, TOML/JSON/YAML converter, .env editor, cron generator, Docker Compose validator. Your data never leaves your browser."
+>
+  <div class="space-y-8">
+    <div class="text-center space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-bold">
+        <span class="text-[--color-accent]">&gt;_</span> DevToolKit
+      </h1>
+      <p class="text-[--color-text-secondary] text-lg max-w-2xl mx-auto">
+        Fast, free developer utilities that run entirely in your browser. No tracking, no data collection, no sign-up.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.map(tool => (
+        <a
+          href={tool.href}
+          class="group rounded-xl bg-[--color-bg-secondary] border border-[--color-border] p-5 hover:border-[--color-accent] transition-all no-underline block"
+        >
+          <div class="text-2xl mb-3">{tool.icon}</div>
+          <h2 class="text-lg font-semibold text-[--color-text-primary] group-hover:text-[--color-accent] transition-colors mb-2">
+            {tool.title}
+          </h2>
+          <p class="text-sm text-[--color-text-muted] leading-relaxed">
+            {tool.description}
+          </p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            {tool.keywords.map(kw => (
+              <span class="text-xs px-2 py-0.5 rounded-full bg-[--color-bg-tertiary] text-[--color-text-muted]">
+                {kw}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
