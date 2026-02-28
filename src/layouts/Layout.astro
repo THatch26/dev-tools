@@ -62,7 +62,16 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.u
       <div class="ad-banner border-b border-[--color-border] bg-[--color-bg-primary]">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center">
           <div id="ad-top" class="ad-slot" data-placement="top">
-            <!-- AD NETWORK SCRIPT: top banner (728x90 / responsive) -->
+            <script is:inline>
+              atOptions = {
+                'key' : '08ead4887e1307df79f824697473301b',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script is:inline src="https://www.highperformanceformat.com/08ead4887e1307df79f824697473301b/invoke.js"></script>
           </div>
         </div>
       </div>
@@ -76,7 +85,16 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.u
       <div class="ad-banner border-t border-[--color-border] bg-[--color-bg-primary]">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center">
           <div id="ad-bottom" class="ad-slot" data-placement="bottom">
-            <!-- AD NETWORK SCRIPT: bottom banner (728x90 / responsive) -->
+            <script is:inline>
+              atOptions = {
+                'key' : '08ead4887e1307df79f824697473301b',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script is:inline src="https://www.highperformanceformat.com/08ead4887e1307df79f824697473301b/invoke.js"></script>
           </div>
         </div>
       </div>
@@ -125,11 +143,11 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.u
         justify-content: center;
         overflow: hidden;
       }
-      .ad-slot:empty {
-        display: none;
-      }
-      .ad-banner:has(.ad-slot:empty) {
-        display: none;
+      @media (max-width: 767px) {
+        .ad-slot {
+          max-width: 320px;
+          min-height: 50px;
+        }
       }
     </style>
   </body>
