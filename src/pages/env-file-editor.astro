@@ -1,11 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import EnvEditor from '../components/EnvEditor';
+
+const siteUrl = 'https://dev-tools.devtoolsite.workers.dev';
+const toolLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": ".env File Editor",
+  "url": `${siteUrl}/env-file-editor`,
+  "description": "Parse, edit, and convert .env files online. Framework templates for Next.js, Django, Laravel, Express, Rails. Export to JSON, YAML, Docker env, shell format.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "browserRequirements": "Requires JavaScript"
+};
 ---
 
 <Layout
   title=".env File Editor - Environment Variable Editor and Converter"
   description="Parse, edit, and convert .env files online. Framework templates for Next.js, Django, Laravel, Express, Rails. Export to JSON, YAML, Docker env, shell format. Free tool."
+  jsonLd={toolLd}
 >
   <div class="space-y-4">
     <div>
@@ -18,5 +32,23 @@ import EnvEditor from '../components/EnvEditor';
       </p>
     </div>
     <EnvEditor client:load />
+
+    <div class="mt-12 pt-8 border-t border-[--color-border]">
+      <h2 class="text-lg font-semibold mb-4 text-[--color-text-secondary]">Related Tools</h2>
+      <div class="grid sm:grid-cols-3 gap-3">
+        <a href="/toml-json-yaml-converter" class="rounded-lg bg-[--color-bg-secondary] border border-[--color-border] p-4 hover:border-[--color-accent] transition-all no-underline block">
+          <div class="font-medium text-[--color-text-primary]">TOML / JSON / YAML Converter</div>
+          <div class="text-sm text-[--color-text-muted] mt-1">Convert between config file formats</div>
+        </a>
+        <a href="/docker-compose-validator" class="rounded-lg bg-[--color-bg-secondary] border border-[--color-border] p-4 hover:border-[--color-accent] transition-all no-underline block">
+          <div class="font-medium text-[--color-text-primary]">Docker Compose Validator</div>
+          <div class="text-sm text-[--color-text-muted] mt-1">Validate docker-compose.yml files</div>
+        </a>
+        <a href="/cron-expression-generator" class="rounded-lg bg-[--color-bg-secondary] border border-[--color-border] p-4 hover:border-[--color-accent] transition-all no-underline block">
+          <div class="font-medium text-[--color-text-primary]">Cron Expression Generator</div>
+          <div class="text-sm text-[--color-text-muted] mt-1">Build and decode cron expressions visually</div>
+        </a>
+      </div>
+    </div>
   </div>
 </Layout>

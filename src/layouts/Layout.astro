@@ -5,13 +5,36 @@ interface Props {
   canonical?: string;
   showTopAd?: boolean;
   showBottomAd?: boolean;
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
-const { title, description, canonical, showTopAd = true, showBottomAd = true } = Astro.props;
+const { title, description, canonical, showTopAd = true, showBottomAd = true, jsonLd } = Astro.props;
 const siteName = 'DevToolKit';
 const fullTitle = `${title} | ${siteName}`;
 const siteUrl = 'https://dev-tools.devtoolsite.workers.dev';
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
+const pathname = Astro.url.pathname;
+
+// Build breadcrumb JSON-LD
+const breadcrumbItems = [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl }
+];
+if (pathname !== '/') {
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    "position": 2,
+    "name": title.split(' - ')[0].split(' | ')[0],
+    "item": canonicalUrl
+  });
+}
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbItems
+};
+
+// Combine all JSON-LD: breadcrumb + page-specific
+const allJsonLd = [breadcrumbLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
 ---
 
 <!doctype html>
@@ -39,6 +62,9 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.u
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
     <title>{fullTitle}</title>
+    {allJsonLd.map(ld => (
+      <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    ))}
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="border-b border-[--color-border] bg-[--color-bg-secondary]">

@@ -1,6 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const siteUrl = 'https://dev-tools.devtoolsite.workers.dev';
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "DevToolKit",
+  "url": siteUrl,
+  "description": "Fast, free, client-side developer tools. Your data never leaves your browser.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+};
+
 const tools = [
   {
     title: 'chmod Calculator',
@@ -43,6 +57,7 @@ const tools = [
 <Layout
   title="Free Online Developer Tools"
   description="Fast, free, client-side developer tools. chmod calculator, TOML/JSON/YAML converter, .env editor, cron generator, Docker Compose validator. Your data never leaves your browser."
+  jsonLd={websiteLd}
 >
   <div class="space-y-8">
     <div class="text-center space-y-3">
