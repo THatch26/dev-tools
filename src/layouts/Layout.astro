@@ -10,7 +10,7 @@ interface Props {
 const { title, description, canonical, showTopAd = true, showBottomAd = true } = Astro.props;
 const siteName = 'DevToolKit';
 const fullTitle = `${title} | ${siteName}`;
-const siteUrl = 'https://dev-tools.tylerhatch3.workers.dev';
+const siteUrl = 'https://dev-tools.devtoolsite.workers.dev';
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
 ---
 

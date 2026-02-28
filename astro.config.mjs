@@ -7,5 +7,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://dev-tools.tylerhatch3.workers.dev',
+  site: 'https://dev-tools.devtoolsite.workers.dev',
 });
