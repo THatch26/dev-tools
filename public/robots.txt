@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devtoolkit.pages.dev/sitemap.xml
+Sitemap: https://dev-tools.tylerhatch3.workers.dev/sitemap.xml
