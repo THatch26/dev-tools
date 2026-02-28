@@ -3,9 +3,11 @@ interface Props {
   title: string;
   description: string;
   canonical?: string;
+  showTopAd?: boolean;
+  showBottomAd?: boolean;
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical, showTopAd = true, showBottomAd = true } = Astro.props;
 const siteName = 'DevToolKit';
 const fullTitle = `${title} | ${siteName}`;
 const siteUrl = 'https://dev-tools.tylerhatch3.workers.dev';
@@ -56,9 +58,29 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.u
       </nav>
     </header>
 
+    {showTopAd && (
+      <div class="ad-banner border-b border-[--color-border] bg-[--color-bg-primary]">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center">
+          <div id="ad-top" class="ad-slot" data-placement="top">
+            <!-- AD NETWORK SCRIPT: top banner (728x90 / responsive) -->
+          </div>
+        </div>
+      </div>
+    )}
+
     <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
       <slot />
     </main>
+
+    {showBottomAd && (
+      <div class="ad-banner border-t border-[--color-border] bg-[--color-bg-primary]">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center">
+          <div id="ad-bottom" class="ad-slot" data-placement="bottom">
+            <!-- AD NETWORK SCRIPT: bottom banner (728x90 / responsive) -->
+          </div>
+        </div>
+      </div>
+    )}
 
     <footer class="border-t border-[--color-border] bg-[--color-bg-secondary] mt-auto">
       <div class="max-w-6xl mx-auto px-4 py-6">
@@ -93,6 +115,22 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.u
 
     <style is:global>
       @import '../styles/global.css';
+
+      .ad-slot {
+        min-height: 90px;
+        max-width: 728px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .ad-slot:empty {
+        display: none;
+      }
+      .ad-banner:has(.ad-slot:empty) {
+        display: none;
+      }
     </style>
   </body>
 </html>
